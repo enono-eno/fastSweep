@@ -1,0 +1,157 @@
+var submitButton = document.getElementById("submit");
+var input = document.querySelector('#text_in');
+var messages = document.querySelector('#messages');
+submitButton.onclick = parseInput;
+
+function parseInput() {
+	var inText = input.value
+  
+  var textEmoji = [":zero:", ":one:", ":two:", ":three:", ":four:", ":five:", ":six:", ":seven:", ":eight:", ":nine:", ":one::zero:", ":one::one:", ":one::two:", ":one::three:", ":one::four:", ":one::five:", ":one::six:", ":one::seven:", ":one::eight:", ":one::nine:", ":two::zero:"]
+  
+  var headerText = "";
+  var GobText = "";
+  var GobCtr = 0;
+  var LBText = "";
+  var LBCtr = 0;
+  var MistText = "";
+  var MistCtr = 0;
+  var ShiroText = "";
+  var ShiroCtr = 0;
+
+	var r = /\d+/;
+
+  var res = inText.split("@");
+  for (i = 0; i < res.length; i++)
+  {
+  	if (res[i].includes("SmallGoblet")){
+      	GobCtr++;
+        sp = res[i].split("-")
+        ward = sp[0].match(r);
+        plot = sp[1].match(r);
+        GobText = GobText + "[S] " + String(ward).padStart(2, '0') + "-" + String(plot).padStart(2, '0') + ", "
+    }
+    if (res[i].includes("MediumGoblet")){
+      	GobCtr++;
+        sp = res[i].split("-")
+        ward = sp[0].match(r);
+        plot = sp[1].match(r);
+        GobText = GobText + "[M] " + String(ward).padStart(2, '0') + "-" + String(plot).padStart(2, '0') + ", "
+    }
+    if (res[i].includes("LargeGoblet")){
+      	GobCtr++;
+        sp = res[i].split("-")
+        ward = sp[0].match(r);
+        plot = sp[1].match(r);
+        GobText = GobText + "[L] " + String(ward).padStart(2, '0') + "-" + String(plot).padStart(2, '0') + ", "
+    }
+    if (res[i].includes("SmallLavenderBeds")){
+      	LBCtr++;
+        sp = res[i].split("-")
+        ward = sp[0].match(r);
+        plot = sp[1].match(r);
+        LBText = LBText + "[S] " + String(ward).padStart(2, '0') + "-" + String(plot).padStart(2, '0') + ", "
+    }
+    if (res[i].includes("MediumLavenderBeds")){
+      	LBCtr++;
+        sp = res[i].split("-")
+        ward = sp[0].match(r);
+        plot = sp[1].match(r);
+        LBText = LBText + "[M] " + String(ward).padStart(2, '0') + "-" + String(plot).padStart(2, '0') + ", "
+    }
+    if (res[i].includes("LargeLavenderBeds")){
+      	LBCtr++;
+        sp = res[i].split("-")
+        ward = sp[0].match(r);
+        plot = sp[1].match(r);
+        LBText = LBText + "[L] " + String(ward).padStart(2, '0') + "-" + String(plot).padStart(2, '0') + ", "
+    }
+    if (res[i].includes("SmallMist")){
+      	MistCtr++;
+        sp = res[i].split("-")
+        ward = sp[0].match(r);
+        plot = sp[1].match(r);
+        MistText = MistText + "[S] " + String(ward).padStart(2, '0') + "-" + String(plot).padStart(2, '0') + ", "
+    }
+    if (res[i].includes("MediumMist")){
+      	MistCtr++;
+        sp = res[i].split("-")
+        ward = sp[0].match(r);
+        plot = sp[1].match(r);
+        MistText = MistText + "[M] " + String(ward).padStart(2, '0') + "-" + String(plot).padStart(2, '0') + ", "
+    }
+    if (res[i].includes("LargeMist")){
+      	MistCtr++;
+        sp = res[i].split("-")
+        ward = sp[0].match(r);
+        plot = sp[1].match(r);
+        MistText = MistText + "[L] " + String(ward).padStart(2, '0') + "-" + String(plot).padStart(2, '0') + ", "
+    }
+    if (res[i].includes("SmallShirogane")){
+      	ShiroCtr++;
+        sp = res[i].split("-")
+        ward = sp[0].match(r);
+        plot = sp[1].match(r);
+        ShiroText = ShiroText + "[S] " + String(ward).padStart(2, '0') + "-" + String(plot).padStart(2, '0') + ", "
+    }
+    if (res[i].includes("MediumShirogane")){
+      	ShiroCtr++;
+        sp = res[i].split("-")
+        ward = sp[0].match(r);
+        plot = sp[1].match(r);
+        ShiroText = ShiroText + "[M] " + String(ward).padStart(2, '0') + "-" + String(plot).padStart(2, '0') + ", "
+    }
+    if (res[i].includes("LargeShirogane")){
+      	ShiroCtr++;
+        sp = res[i].split("-")
+        ward = sp[0].match(r);
+        plot = sp[1].match(r);
+        ShiroText = ShiroText + "[L] " + String(ward).padStart(2, '0') + "-" + String(plot).padStart(2, '0') + ", "
+    }
+  }
+  
+  if (GobCtr > 0)
+  {
+  	GobText = GobText.slice(0, GobText.length-2) + "."
+  }
+  GobText = textEmoji[GobCtr] + ":desert: Goblet: " + GobText
+  if (GobCtr <= 0)
+  {
+  GobText = GobText + ": 0."
+  }
+  
+  if (LBCtr > 0)
+  {
+  	LBText = LBText.slice(0, LBText.length-2) + "."
+  }
+  LBText = textEmoji[LBCtr] + ":bouquet: LB: " + LBText
+  if (LBCtr <= 0)
+  {
+  LBText = LBText + ": 0."
+  }
+  
+  if (MistCtr > 0)
+  {
+  	MistText = MistText.slice(0, MistText.length-2) + "."
+  }
+  MistText = textEmoji[MistCtr] + ":sweat_drops: Mist: " + MistText
+  if (MistCtr <= 0)
+  {
+  MistText = MistText + ": 0."
+  }
+  
+  
+  if (ShiroCtr > 0)
+  {
+  	ShiroText = ShiroText.slice(0, ShiroText.length-2) + "."
+  }
+  ShiroText = textEmoji[ShiroCtr] + ":shinto_shrine: Shirogane: " + ShiroText
+  if (ShiroCtr <= 0)
+  {
+  ShiroText = ShiroText + " 0."
+  }
+  
+  headerText = textEmoji[ShiroCtr+MistCtr+LBCtr+GobCtr] + ":broom: Full Sweep:"
+  
+  var textFinal = headerText  + '\n' + GobText + '\n' + LBText + '\n' + MistText + '\n' + ShiroText ;
+	messages.textContent =  textFinal;
+}
